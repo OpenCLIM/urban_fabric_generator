@@ -17,6 +17,7 @@ metadata:
     Alistair Ford, Stuart Barr, Richard Dawson, James Virgo, Michael Batty, Jim Hall (2019) A multi-scale urban
     integrated assessment framework for climate change studies: A flooding application. Computers, Environment and
     Urban Systems. 75, 229-243. https://doi.org/10.1016/j.compenvurbsys.2019.02.005.
+    
 spec:
   inputs:
     parameters:
@@ -25,13 +26,18 @@ spec:
         type: string
         description: The title given to the output dataset
         default: Urban Fabric Output
-        required: false
-
-    dataslots:
-      - name: Input data
-        description: Input data
-        path: inputs
-        required: false
+        required: true
+        
+      dataslots:
+      - name: Urban Development Raster
+        description:
+          Planned urban development must be provided in ASCII raster format, within a single file or as multiple tiles. Should be
+          taken from the UDM output file *_cell_dev.asc
+        default:
+          - 5ea9236f-05af-4c3e-992d-4be675b2a949
+        path: inputs/uf
+        required: true 
+        
   outputs:
     datasets:
       - name: outputs/data/
