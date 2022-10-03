@@ -32,7 +32,7 @@ spec:
       - name: Urban Development Raster
         description:
           Planned urban development must be provided in ASCII raster format, within a single file or as multiple tiles. Should be
-          taken from the UDM output file *_cell_dev.asc
+          taken from the UDM output file *_cell_dph.asc
         default:
           - 5ea9236f-05af-4c3e-992d-4be675b2a949
         path: inputs/uf
