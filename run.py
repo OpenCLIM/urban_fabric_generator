@@ -1,3 +1,4 @@
+import geopandas as gpd
 import os
 from shutil import copyfile
 import subprocess
@@ -19,30 +20,31 @@ def zip_file(path, file):
     os.remove(join(path, file))
     return
 
-# Set up paths
-data_path = os.getenv('DATA_PATH', '/data')
-inputs_path = os.path.join(data_path, 'inputs')
-outputs_path = os.path.join(data_path, 'outputs')
-if not os.path.exists(outputs_path):
-    os.mkdir(outputs_path)
-buildings_path = os.path.join(outputs_path,'buildings')
-if not os.path.exists(buildings_path):
-    os.mkdir(buildings_path)
+# move files to output dir
+result_data_dir = '/data/inputs'
+output_data_dir = '/data/outputs/data'
+buildings_data_dir = '/data/outputs/buildings'
+
+# make output dir if not exists
+os.makedirs(output_data_dir, exist_ok=True)
+os.makedirs(buildings_data_dir, exist_ok=True)
 
 
 # run urban fabric generator tool
 # make output dir if not exists
-urban_fabric_raster = os.path.join(outputs_data, 'out_uf.asc')
-subprocess.run(['generate_urban_fabric', '-i', '/data/inputs/data/out_cell_dph.asc', '-o', urban_fabric_raster])
+urban_fabric_raster = os.path.join(output_data_dir, 'out_uf.asc')
+subprocess.run(['generate_urban_fabric', '-i', '/data/inputs/out_cell_dph.asc', '-o', urban_fabric_raster])
 
 print('*** Ran UFG ***')
 
 # run raster to vector tool
 subprocess.run(['raster_to_vector', '-i', '/data/outputs/data/out_uf.asc', '-o',
-                os.path.join(buildings_path, "urban_fabric.gpkg"), '-f' 'buildings,roads,greenspace'])
+                os.path.join(buildings_data_dir, "urban_fabric.gpkg"), '-f' 'buildings,roads,greenspace'])
+
+exit
 
 # in an old version the data is stored in the wrong place. zip into a suitable output location
-zipObj = ZipFile('/data/outputs/data/urban_fabric.zip', 'w')
+zipObj = ZipFile('/data/outputs/urban_fabric.zip', 'w')
 
 print('searching for output')
 for root, dirs, files in walk('/'):
