@@ -33,7 +33,7 @@ os.makedirs(buildings_data_dir, exist_ok=True)
 # run urban fabric generator tool
 # make output dir if not exists
 urban_fabric_raster = os.path.join(output_data_dir, 'out_uf.asc')
-subprocess.run(['generate_urban_fabric', '-i', '/data/inputs/out_cell_dph.asc', '-o', urban_fabric_raster])
+subprocess.run(['generate_urban_fabric', '-i', '/data/inputs/out_cell_dph_clip.asc', '-o', urban_fabric_raster])
 
 print('*** Ran UFG ***')
 
