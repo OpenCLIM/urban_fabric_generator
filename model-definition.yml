@@ -36,7 +36,7 @@ spec:
         default:
           - 5ea9236f-05af-4c3e-992d-4be675b2a949
         path: inputs/uf
-        required: true 
+        required: false 
         
   outputs:
     datasets:
