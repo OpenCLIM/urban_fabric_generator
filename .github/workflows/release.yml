@@ -1,0 +1,32 @@
+name: Upload to DAFNI
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release:
+    name: Upload to DAFNI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Docker Build
+        run: docker build -t urban_fabric_generator .
+
+      - name: Compress docker image
+        run: docker save urban_fabric_generator | gzip > urban_fabric.tar.gz
+
+      - name: Set tag as env
+        run: echo "TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+
+      - name: Upload to DAFNI
+        uses: dafnifacility/dafni-model-uploader@v1.9
+        with:
+          definition-path: ./model-definition.yml
+          image-path: ./urban_fabric.tar.gz
+          username: ${{ secrets.DAFNI_SERVICE_ACCOUNT_USERNAME }}
+          password: ${{ secrets.DAFNI_SERVICE_ACCOUNT_PASSWORD }}
+          version-message: ${{ env.TAG }}
+          parent-model: "a3d43d04-7818-461c-bed4-1708354d239f"
