@@ -32,12 +32,13 @@ os.makedirs(buildings_data_dir, exist_ok=True)
 
 # run urban fabric generator tool
 # make output dir if not exists
-build_type_ras = os.path.join(result_data_dir, 'out_cell_build_type.asc')
-tile_type_ras = os.path.join(result_data_dir, 'out_cell_tile_type.asc')
+build_type_ras = os.path.join(result_data_dir, 'out_cell_build_type_clip.asc')
+tile_type_ras = os.path.join(result_data_dir, 'out_cell_tile_type_clip.asc')
 urban_fabric_raster = os.path.join(output_data_dir, 'out_uf.asc')
-tiles_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'Tiles'))
+#tiles_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'Tiles'))
 #subprocess.run(['generate_urban_fabric', '-i', '/data/inputs/out_cell_dph_clip.asc', '-o', urban_fabric_raster])
-subprocess.run(['ufg_fabric_from_coverage', '-ib', build_type_ras, 'it', tile_type_ras, '-of', urban_fabric_raster, '-tp', tiles_path])
+#subprocess.run(['ufg_fabric', '-ib', build_type_ras, 'it', tile_type_ras, '-of', urban_fabric_raster, '-tp', tiles_path])
+subprocess.run(['ufg_fabric', '-ib', build_type_ras, 'it', tile_type_ras, '-of', urban_fabric_raster])
 
 print('*** Ran UFG ***')
 
