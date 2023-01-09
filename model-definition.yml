@@ -10,7 +10,7 @@ metadata:
     from the UDM model which defines where future urban development might take place, subject to attractors, constraints 
     and variable density of development and creates building and greenspace polygons determined by pre-selected critera 
     (housing types - detached, flats etc.). 
-  source_code: https://github.com/OpenCLIM/udm_fabric_generator
+  source_code: https://github.com/OpenCLIM/urban_fabric_generator
   description: >
     OpenUDM has been used in a number of contexts to explore urban development scenarios. This urban fabric generator is a subset
     of the model, to reduce the size of the output files and focus on a specific area.
