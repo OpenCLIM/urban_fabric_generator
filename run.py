@@ -64,6 +64,7 @@ for root, dirs, files in walk('/'):
 zipObj.close()
 
 # to save disk space, zip out_uf.asc and delete the raw file
-zip_file(output_data_dir, 'out_uf.asc')
+# zip_file(output_data_dir, 'out_uf.asc')
+os.remove(join(output_data_dir, 'out_uf.asc'))
 
 print('*** Ran R2V ***')
