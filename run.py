@@ -10,6 +10,7 @@ import math
 from rasterio.crs import CRS
 import rasterio as rio
 import geopandas
+import pandas as pd
 
 from os import getenv, walk, mkdir, remove, listdir
 from os.path import join, isdir, isfile
@@ -122,7 +123,7 @@ subprocess.run(['gdal_translate', '-a_srs', 'EPSG:27700', raster_output_clip1, r
 subprocess.run(['gdal_translate', '-a_srs', 'EPSG:27700', raster_output_clip2, raster_output_clip2b])
 subprocess.run(['gdal_translate', '-a_srs', 'EPSG:27700', raster_output_clip3, raster_output_clip3b])
 
-import pandas as pd
+
 parameters_path = os.path.join(inputs_path,'parameters')
 
 
