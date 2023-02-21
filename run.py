@@ -75,6 +75,9 @@ outputs_path = os.path.join(data_path, 'outputs')
 if not os.path.exists(outputs_path):
     os.mkdir(outputs_path)
 
+outputs_path_data = os.path.join(data_path, 'outputs', 'data')
+if not os.path.exists(outputs_path_data):
+    os.mkdir(outputs_path_data)
 
 # Identify input polygons and shapes (boundary of city, and OS grid cell references)
 boundary_1 = glob(boundary_path + "/*.*", recursive = True)
