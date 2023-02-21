@@ -155,7 +155,7 @@ print(urban_fabric_raster,':',os.path.isfile(urban_fabric_raster))
 print('*** Going to run raster to vector ***')
 # run raster to vector tool
 subprocess.run(['raster_to_vector', '-i', '/data/outputs/data/out_uf.asc', '-o',
-                os.path.join(buildings_path, "urban_fabric.gpkg"), '-f' 'buildings,roads,greenspace'])
+                os.path.join(outputs_path, "urban_fabric.gpkg"), '-f' 'buildings,roads,greenspace'])
 
 # in an old version the data is stored in the wrong place. zip into a suitable output location
 zipObj = ZipFile(os.path.join(outputs_path, f'{ssp}-{year}-urban_fabric.zip'), 'w')
