@@ -78,15 +78,26 @@ if not os.path.exists(outputs_path):
 outputs_path_data = os.path.join(data_path, 'outputs', 'data')
 if not os.path.exists(outputs_path_data):
     os.mkdir(outputs_path_data)
+    
+# Identify the name of the folder containing the zipped UDM documents  
+udm_data = glob(inputs_path + "/*.zip", recursive = True)
+file_path = os.path.splitext(udm_data[0])
+print('Filepath:',file_path)
+filename=file_path[0].split("/")
+print('Filename:',filename[-1])
+
+# Create a filepath to that folder
+udm_path = os.path.join(inputs_path, filename[-1])
+print('udm_path:',udm_path)
 
 # Identify input polygons and shapes (boundary of city, and OS grid cell references)
 boundary_1 = glob(boundary_path + "/*.*", recursive = True)
 print('clip:', boundary_1[0])
-dst1=os.path.join(inputs_path, 'out_cell_build_type.asc')
+dst1=os.path.join(udm_path, 'out_cell_build_type.asc')
 print('Input1:', dst1)
-dst2=os.path.join(inputs_path, 'out_cell_dph.asc')
+dst2=os.path.join(udm_path, 'out_cell_dph.asc')
 print('Input2:', dst2)
-dst3=os.path.join(inputs_path, 'out_cell_tile_type.asc')
+dst3=os.path.join(udm_path, 'out_cell_tile_type.asc')
 print('Input3:', dst3)
 raster_output_clip1 = os.path.join(required_path, 'out_cell_build_type_clip.tif')
 raster_output_clip1b = os.path.join(required_path, 'out_cell_build_type.asc')
