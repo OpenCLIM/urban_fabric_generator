@@ -103,7 +103,7 @@ raster_output_clip1 = os.path.join(required_path, 'out_cell_build_type_clip.tif'
 raster_output_clip1b = os.path.join(required_path, 'out_cell_build_type.asc')
 print('Output1:', raster_output_clip1)
 raster_output_clip2 = os.path.join(required_path, 'out_cell_dph_clip.tif')
-raster_output_clip2b = os.path.join(required_path, 'out_cell_dph.asc')
+raster_output_clip2b = os.path.join(outputs_path, 'out_cell_dph_clip.asc')
 print('Output2:', raster_output_clip2)
 raster_output_clip3 = os.path.join(required_path, 'out_cell_tile_type_clip.tif')
 raster_output_clip3b = os.path.join(required_path, 'out_cell_tile_type.asc')
