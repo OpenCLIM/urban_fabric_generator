@@ -34,14 +34,15 @@ spec:
         default:
           - 09a6bbc0-8d2c-4e1b-a0d2-7f11833f20ea
         path: inputs/boundary
-        required: true
+        required: false
         
       - name: UDM Rasers
         description:
           These files relate to the outputs taken from the UDM model that are needed to run the UFG.
         default:
           - 708e0969-b0f7-4a0e-a4a6-de214b6ce323
-          path: inputs
+        path: inputs
+        required: false 
         
   outputs:
     datasets:
