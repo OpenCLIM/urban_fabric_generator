@@ -81,6 +81,10 @@ outputs_parameters_data = os.path.join(data_path, 'outputs', 'parameters')
 if not os.path.exists(outputs_parameters_data):
     os.mkdir(outputs_parameters_data)
     
+outputs_data_path = os.path.join(data_path, 'outputs', 'data')
+if not os.path.exists(outputs_data_path):
+    os.mkdir(outputs_data_path)
+    
 # Identify the name of the folder containing the zipped UDM documents  
 udm_data = glob(inputs_path + "/*.zip", recursive = True)
 file_path = os.path.splitext(udm_data[0])
