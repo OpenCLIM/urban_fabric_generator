@@ -17,8 +17,40 @@ metadata:
     Alistair Ford, Stuart Barr, Richard Dawson, James Virgo, Michael Batty, Jim Hall (2019) A multi-scale urban
     integrated assessment framework for climate change studies: A flooding application. Computers, Environment and
     Urban Systems. 75, 229-243. https://doi.org/10.1016/j.compenvurbsys.2019.02.005.  
+    
 spec:
-  inputs:      
+  inputs:
+    parameters:    
+      - name: YEAR
+        title: Year
+        type: number
+        description: The year of interest (range 2030-2080)
+        default: 2050
+        required: true
+        options:
+          - name: 2050
+            title: 2050
+          - name: 2080
+            title: 2080
+
+      - name: SSP
+        title: SSP
+        type: string
+        description: The socio-economic pathway of interest
+        default: 'ssp1'
+        required: true
+        options:
+          - name: 'ssp1'
+            title: 'ssp1'
+          - name: 'ssp2'
+            title: 'ssp2'
+          - name: 'ssp3'
+            title: 'ssp3'
+          - name: 'ssp4'
+            title: 'ssp4'
+          - name: 'ssp5'
+            title: 'ssp5'      
+    
     dataslots:
       - name: Parameters
         description:
