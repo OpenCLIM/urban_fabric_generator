@@ -156,7 +156,7 @@ if len(parameter_file) == 1 :
     ssp = parameters.loc[1][1]
     year = parameters.loc[2][1]
 
- if len(parameter_file) == 0 :   
+if len(parameter_file) == 0 :   
     ssp = os.getenv('SSP')
     year = os.getenv('YEAR')
      
