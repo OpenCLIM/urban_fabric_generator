@@ -26,7 +26,7 @@ spec:
         type: number
         description: The year of interest (range 2030-2080)
         default: 2050
-        required: true
+        required: false
         options:
           - name: 2050
             title: 2050
@@ -38,7 +38,7 @@ spec:
         type: string
         description: The socio-economic pathway of interest
         default: 'ssp1'
-        required: true
+        required: false
         options:
           - name: 'ssp1'
             title: 'ssp1'
