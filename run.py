@@ -64,6 +64,7 @@ print(data_path)
 inputs_path = os.path.join(data_path, 'inputs')
 boundary_path = os.path.join(inputs_path, 'boundary')
 required_path = os.path.join(inputs_path,'required')
+parameters_path = os.path.join(inputs_path,'parameters')
 
 print(inputs_path)
 if not os.path.exists(inputs_path):
@@ -76,9 +77,9 @@ outputs_path = os.path.join(data_path, 'outputs')
 if not os.path.exists(outputs_path):
     os.mkdir(outputs_path)
 
-outputs_path_data = os.path.join(data_path, 'outputs', 'data')
-if not os.path.exists(outputs_path_data):
-    os.mkdir(outputs_path_data)
+outputs_parameters_data = os.path.join(data_path, 'outputs', 'parameters')
+if not os.path.exists(outputs_parameters_data):
+    os.mkdir(outputs_parameters_data)
     
 # Identify the name of the folder containing the zipped UDM documents  
 udm_data = glob(inputs_path + "/*.zip", recursive = True)
@@ -139,9 +140,6 @@ subprocess.run(['gdal_translate', '-a_srs', 'EPSG:27700', raster_output_clip2, r
 subprocess.run(['gdal_translate', '-a_srs', 'EPSG:27700', raster_output_clip3, raster_output_clip3b])
 
 
-parameters_path = os.path.join(inputs_path,'parameters')
-
-
 parameter_file = glob(parameters_path + "/*.csv", recursive = True)
 print('parameter_file:', parameter_file)
 
@@ -159,7 +157,7 @@ if len(parameter_file) == 1 :
     
     src = parameter_file[0]
     print('src:',src)
-    dst = os.path.join(outputs_path,filename[-1] + '.csv')
+    dst = os.path.join(outputs_parameters_data,filename[-1] + '.csv')
     print('dst,dst')
     shutil.copy(src,dst)
 
