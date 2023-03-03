@@ -155,6 +155,12 @@ if len(parameter_file) == 1 :
 
     ssp = parameters.loc[1][1]
     year = parameters.loc[2][1]
+    
+    src = parameter_file[0]
+    print('src:',src)
+    dst = os.path.join(outputs_path,filename[-1] + '.csv')
+    print('dst,dst')
+    shutil.copy(src,dst)
 
 if len(parameter_file) == 0 :   
     ssp = os.getenv('SSP')
