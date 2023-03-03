@@ -144,17 +144,22 @@ parameters_path = os.path.join(inputs_path,'parameters')
 parameter_file = glob(parameters_path + "/*.csv", recursive = True)
 print('parameter_file:', parameter_file)
 
-file_path = os.path.splitext(parameter_file[0])
-print('Filepath:',file_path)
-filename=file_path[0].split("/")
-print('Filename:',filename[-1])
+if len(parameter_file) == 1 :
+    file_path = os.path.splitext(parameter_file[0])
+    print('Filepath:',file_path)
+    filename=file_path[0].split("/")
+    print('Filename:',filename[-1])
 
-print(inputs_path + '/' + filename[-1] + '.csv')
-parameters = pd.read_csv(os.path.join(parameters_path, filename[-1] + '.csv'))
+    print(inputs_path + '/' + filename[-1] + '.csv')
+    parameters = pd.read_csv(os.path.join(parameters_path, filename[-1] + '.csv'))
 
-ssp = parameters.loc[1][1]
-year = parameters.loc[2][1]
+    ssp = parameters.loc[1][1]
+    year = parameters.loc[2][1]
 
+ if len(parameter_file) == 0 :   
+    ssp = os.getenv('SSP')
+    year = os.getenv('YEAR')
+     
 # run urban fabric generator tool
 # make output dir if not exists
 build_type_ras = os.path.join(required_path, 'out_cell_build_type.asc')
