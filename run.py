@@ -91,7 +91,7 @@ if len(parameter_file) == 1 :
     print('Filename:',filename[-1])
 
     parameters = pd.read_csv(os.path.join(parameters_path + '/' + filename[-1] + '.csv'))
-    baseline = parameters.loc[17][1].lower() == 'true'
+    baseline = parameters.loc[17][1]
     print('baseline:', baseline)
 
 if len(parameter_file) == 0 :
