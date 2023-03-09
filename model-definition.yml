@@ -21,15 +21,6 @@ metadata:
 spec:
   inputs:
     parameters:   
-      - name: BASELINE
-        title: Baseline
-        description:
-          If no year or SSP is selected, set baseline = TRUE. This will run the simulation based off the current
-          building and greenspace data. No new buildings will be generated.
-        type: boolean
-        default: False
-        required: false
-    
       - name: YEAR
         title: Year
         type: number
@@ -37,6 +28,8 @@ spec:
         default: 2050
         required: false
         options:
+          - name: 2020
+            title: 2020
           - name: 2050
             title: 2050
           - name: 2080
@@ -49,6 +42,8 @@ spec:
         default: 'ssp1'
         required: false
         options:
+          - name: 'baseline'
+            title: 'baseline'
           - name: 'ssp1'
             title: 'ssp1'
           - name: 'ssp2'
