@@ -95,9 +95,9 @@ if len(parameter_file) == 1 :
     print('baseline:', baseline)
 
 if len(parameter_file) == 0 :
-    baseline = (os.getenv('BASELINE').lower() == 'true')
+    baseline = (os.getenv('BASELINE'))
 
-if baseline == False :
+if baseline == "False" :
     # Identify the name of the folder containing the zipped UDM documents  
     udm_data = glob(inputs_path + "/*.zip", recursive = True)
     file_path = os.path.splitext(udm_data[0])
