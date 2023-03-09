@@ -13,6 +13,7 @@ import rasterio as rio
 import geopandas
 import pandas as pd
 
+
 from os import getenv, walk, mkdir, remove, listdir
 from os.path import join, isdir, isfile
 
@@ -91,13 +92,17 @@ if len(parameter_file) == 1 :
     print('Filename:',filename[-1])
 
     parameters = pd.read_csv(os.path.join(parameters_path + '/' + filename[-1] + '.csv'))
-    baseline = parameters.loc[17][1]
-    print('baseline:', baseline)
+    ssp = str(parameters.loc[1][1])
+    year = parameters.loc[2][1]
 
 if len(parameter_file) == 0 :
-    baseline = (os.getenv('BASELINE'))
+    ssp = (os.getenv('SSP'))
+    year = (os.getenv('YEAR'))
 
-if baseline == "False" :
+print('SSP:',ssp)
+print('Year:',year)
+
+if ssp != "baseline" :
     # Identify the name of the folder containing the zipped UDM documents  
     udm_data = glob(inputs_path + "/*.zip", recursive = True)
     file_path = os.path.splitext(udm_data[0])
@@ -159,31 +164,17 @@ if baseline == "False" :
 
     parameters_path = os.path.join(inputs_path,'parameters')
 
-
-    parameter_file = glob(parameters_path + "/*.csv", recursive = True)
-    print('parameter_file:', parameter_file)
-
     if len(parameter_file) == 1 :
         file_path = os.path.splitext(parameter_file[0])
         print('Filepath:',file_path)
         filename=file_path[0].split("/")
         print('Filename:',filename[-1])
 
-        print(inputs_path + '/' + filename[-1] + '.csv')
-        parameters = pd.read_csv(os.path.join(parameters_path, filename[-1] + '.csv'))
-
-        ssp = parameters.loc[1][1]
-        year = parameters.loc[2][1]
-        
         src = parameter_file[0]
         print('src:',src)
         dst = os.path.join(outputs_path,filename[-1] + '.csv')
         print('dst,dst')
         shutil.copy(src,dst)
-
-    if len(parameter_file) == 0 :   
-        ssp = os.getenv('SSP')
-        year = os.getenv('YEAR')
         
     # run urban fabric generator tool
     # make output dir if not exists
