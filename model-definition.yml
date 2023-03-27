@@ -25,7 +25,6 @@ spec:
         title: Year
         type: number
         description: The year of interest (range 2030-2080)
-        default: 2050
         required: false
         options:
           - name: 2020
@@ -39,7 +38,6 @@ spec:
         title: SSP
         type: string
         description: The socio-economic pathway of interest
-        default: 'ssp1'
         required: false
         options:
           - name: 'baseline'
