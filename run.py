@@ -82,6 +82,10 @@ outputs_path_data = os.path.join(data_path, 'outputs', 'data')
 if not os.path.exists(outputs_path_data):
     os.mkdir(outputs_path_data)
 
+udm_para_path = os.path.join(outputs_path, 'udm_parameters')
+if not os.path.exists(udm_para_path):
+    os.mkdir(udm_para_path)
+
 parameter_file = glob(parameters_path + "/*.csv", recursive = True)
 print('parameter_file:', parameter_file)
 
@@ -175,7 +179,23 @@ if ssp != "baseline" :
         dst = os.path.join(outputs_path,filename[-1] + '.csv')
         print('dst,dst')
         shutil.copy(src,dst)
-        
+
+    meta_data = glob(inputs_path + "/**/metadata.csv", recursive = True)
+    attractors = glob(inputs_path + "/**/attractors.csv", recursive = True)
+    constraints = glob(inputs_path + "/**/constraints.csv", recursive = True)
+    
+    src = meta_data[0]
+    dst = os.path.join(udm_para_path,'metadata.csv')
+    shutil.copy(src,dst)
+
+    src = attractors[0]
+    dst = os.path.join(udm_para_path,'attractors.csv')
+    shutil.copy(src,dst)
+
+    src = constraints[0]
+    dst = os.path.join(udm_para_path,'constraints.csv')
+    shutil.copy(src,dst)
+
     # run urban fabric generator tool
     # make output dir if not exists
     build_type_ras = os.path.join(required_path, 'out_cell_build_type.asc')
