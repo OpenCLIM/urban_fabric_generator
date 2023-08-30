@@ -82,9 +82,9 @@ outputs_path_data = os.path.join(data_path, 'outputs', 'data')
 if not os.path.exists(outputs_path_data):
     os.mkdir(outputs_path_data)
 
-udm_para_path = os.path.join(outputs_path, 'udm_parameters')
-if not os.path.exists(udm_para_path):
-    os.mkdir(udm_para_path)
+udm_para_out_path = os.path.join(outputs_path, 'udm_parameters')
+if not os.path.exists(udm_para_out_path):
+    os.mkdir(udm_para_out_path)
 
 parameter_file = glob(parameters_path + "/*.csv", recursive = True)
 print('parameter_file:', parameter_file)
@@ -180,10 +180,10 @@ if ssp != "baseline" :
         print('dst,dst')
         shutil.copy(src,dst)
 
-    meta_data_txt = glob(udm_para_in_path + "/**/metadata.txt", recursive = True)
-    meta_data_csv = glob(udm_para_in_path + "/**/metadata.csv", recursive = True)
-    attractors = glob(udm_para_in_path + "/**/attractors.csv", recursive = True)
-    constraints = glob(udm_para_in_path + "/**/constraints.csv", recursive = True)
+    meta_data_txt = glob(inputs_path + "/**/metadata.txt", recursive = True)
+    meta_data_csv = glob(inputs_path + "/**/metadata.csv", recursive = True)
+    attractors = glob(inputs_path +  "/**/attractors.csv", recursive = True)
+    constraints = glob(inputs_path +  "/**/constraints.csv", recursive = True)
     
     if len(meta_data_txt)==1:
         src = meta_data_txt[0]
