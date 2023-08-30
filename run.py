@@ -180,21 +180,30 @@ if ssp != "baseline" :
         print('dst,dst')
         shutil.copy(src,dst)
 
-    meta_data = glob(inputs_path + "/**/metadata.csv", recursive = True)
-    attractors = glob(inputs_path + "/**/attractors.csv", recursive = True)
-    constraints = glob(inputs_path + "/**/constraints.csv", recursive = True)
+    meta_data_txt = glob(udm_para_in_path + "/**/metadata.txt", recursive = True)
+    meta_data_csv = glob(udm_para_in_path + "/**/metadata.csv", recursive = True)
+    attractors = glob(udm_para_in_path + "/**/attractors.csv", recursive = True)
+    constraints = glob(udm_para_in_path + "/**/constraints.csv", recursive = True)
     
-    src = meta_data[0]
-    dst = os.path.join(udm_para_path,'metadata.csv')
-    shutil.copy(src,dst)
-
-    src = attractors[0]
-    dst = os.path.join(udm_para_path,'attractors.csv')
-    shutil.copy(src,dst)
-
-    src = constraints[0]
-    dst = os.path.join(udm_para_path,'constraints.csv')
-    shutil.copy(src,dst)
+    if len(meta_data_txt)==1:
+        src = meta_data_txt[0]
+        dst = os.path.join(udm_para_out_path,'metadata.txt')
+        shutil.copy(src,dst)
+    
+    if len(meta_data_csv)==1:
+        src = meta_data_csv[0]
+        dst = os.path.join(udm_para_out_path,'metadata.csv')
+        shutil.copy(src,dst)
+    
+    if len(attractors)==1:
+        src = attractors[0]
+        dst = os.path.join(udm_para_out_path,'attractors.csv')
+        shutil.copy(src,dst)
+    
+    if len(constraints)==1:
+        src = constraints[0]
+        dst = os.path.join(udm_para_out_path,'constraints.csv')
+        shutil.copy(src,dst)
 
     # run urban fabric generator tool
     # make output dir if not exists
