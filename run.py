@@ -205,6 +205,8 @@ if ssp != "baseline" :
         dst = os.path.join(udm_para_out_path,'constraints.csv')
         shutil.copy(src,dst)
 
+    print('test')
+
     # run urban fabric generator tool
     # make output dir if not exists
     build_type_ras = os.path.join(required_path, 'out_cell_build_type.asc')
