@@ -82,6 +82,10 @@ outputs_path_data = os.path.join(data_path, 'outputs', 'data')
 if not os.path.exists(outputs_path_data):
     os.mkdir(outputs_path_data)
 
+parameters_out_path = os.path.join(outputs_path, 'parameters')
+if not os.path.exists(parameters_out_path):
+    os.mkdir(parameters_out_path)
+
 udm_para_out_path = os.path.join(outputs_path, 'udm_parameters')
 if not os.path.exists(udm_para_out_path):
     os.mkdir(udm_para_out_path)
@@ -176,7 +180,7 @@ if ssp != "baseline" :
 
         src = parameter_file[0]
         print('src:',src)
-        dst = os.path.join(outputs_path,filename[-1] + '.csv')
+        dst = os.path.join(parameters_out_path,filename[-1] + '.csv')
         print('dst,dst')
         shutil.copy(src,dst)
 
