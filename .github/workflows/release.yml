@@ -28,5 +28,5 @@ jobs:
           image-path: ./urban_fabric.tar.gz
           username: ${{ secrets.DAFNI_SERVICE_ACCOUNT_USERNAME }}
           password: ${{ secrets.DAFNI_SERVICE_ACCOUNT_PASSWORD }}
-          version-message: ${{ env.TAG }}
+          version-message: "Uploaded from GitHub workflow"
           parent-model: "a3d43d04-7818-461c-bed4-1708354d239f"
